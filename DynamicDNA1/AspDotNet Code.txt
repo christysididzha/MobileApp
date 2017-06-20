@@ -1,0 +1,77 @@
+
+  private void btn_Submit_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Add the user to the database.
+            try
+            {
+                // Run custom validation to check if all the required controls contain values
+                // As the 'Not Null' columns in SQL will throw an error if the required column is null.
+                if (txt_Fullname.Text != null && txt_Fullname.Text != string.Empty 
+                    && txt_Username.Text != null && txt_Username.Text != string.Empty
+                    && pb_Password.Password != null && pb_Password.Password != string.Empty
+                    && pb_VerifyPassword.Password != null && pb_VerifyPassword.Password != string.Empty)
+                {
+                    //Check if the passwords match
+                    if(pb_Password.Password == pb_VerifyPassword.Password)
+                    {
+                        // creating a new model to hold a record of our new user
+                        // Create a new instance of the tb_User class provided by
+                        // entity framework
+                        tb_User Model = new tb_User();
+
+                        // Encrypt the password using the encoding class
+                        byte[] EncryptedPassword = Encoding.UTF32.GetBytes(pb_Password.Password);
+
+                        //populate our user model with data provided by the user of the application
+                        Model.Fullname = txt_Fullname.Text;
+                        Model.Username = txt_Username.Text;
+                        Model.Password = Convert.ToBase64String(EncryptedPassword);
+
+                        // Although we have populated our model it's still not saved to our Database
+                        // Table as a record
+
+                        // Add the new record to the database
+                        _db.tb_User.Add(Model);
+
+                        // Savethe changes to the database.
+                        _db.SaveChanges();
+
+                        //Notify the user that their registration was successful
+                        MessageBox.Show("You are now a registered user", "Success",
+                                       MessageBoxButton.OK, MessageBoxImage.Asterisk);
+
+                    }
+
+                    // if the password doesn't match: Notofy the user
+                    else
+                    {
+                        MessageBox.Show("Password doesn't match.", "Warning",
+                                        MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
+
+                    //if the data isn't correctly entered: notify the user of their current error through
+                    //a warning message
+                else
+                {
+
+                    //Clear the form for new registration
+                    txt_Fullname.Clear();
+                    txt_Username.Text = "";
+                    pb_Password.Clear();
+                    pb_VerifyPassword.Clear();
+
+                    MessageBox.Show("Please fill out the required fields.", "Warning",
+                                      MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                }
+            }
+                // write your catch block to catch any and all exceptions
+                // that occure in the try block above
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }

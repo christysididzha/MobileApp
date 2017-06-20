@@ -1,0 +1,78 @@
+﻿
+<!DOCTYPE html>
+<script runat="server">
+
+    Protected Sub Page_Load(sender As Object, e As EventArgs)
+
+    End Sub
+</script>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dynamic DNA </title>
+
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Css/style.css">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Dynamic DNA</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">About</a></li>
+                    <li><a href="Register.html">Register</a></li>
+                    <li><a href="Apply.html">Apply</a></li>
+                </ul>
+
+            </div>
+    </nav>
+    <br /><br/>
+
+    <center>
+        <form>
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input style="width:50% !important;"  class="form-control" id="txtName" >
+            </div>
+            <div class="form-group">
+                <label for="pwd">Surname</label>
+                <input style="width:50% !important;"  class="form-control" id="txtSurname">
+            </div>
+
+            <div class="form-group">
+                <label for="Name">Grade</label>
+                <input style="width:50% !important;"  class="form-control" id="txtGrade">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Contact</label>
+                <input style="width:50% !important;"  class="form-control" id="txtContact">
+            </div>
+
+            <div class="form-group">
+                <label for="pwd">Email</label>
+                <input style="width:50% !important;" class="form-control" id="txtEmail">
+            </div>
+
+            <button type="submit" class="btn btn-default" style="width: 87px">Submit</button>
+        </form>
+    </center>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
